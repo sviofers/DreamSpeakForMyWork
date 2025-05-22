@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DreamSpeak</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 300px;
+            background-color: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            padding: 40px 20px;
+            overflow-y: auto;
+            user-select: none;
+        }
+        .sidebar h1 {
+            font-size: 1.75em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .sidebar h2 {
+            font-size: 1em;
+            font-weight: 300;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .sidebar ul { list-style: none; }
+        .sidebar li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: 300;
+            color: #888;
+            position: relative;
+            user-select: none;
+        }
+        .sidebar li.active {
+            font-weight: 600;
+            color: #000;
+        }
+        .sidebar li.has-submenu::after {
+            content: '▸';
+            position: absolute;
+            right: 10px;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+        }
+        .sidebar li.has-submenu.open::after {
+            transform: rotate(90deg);
+        }
+        .sidebar .submenu {
+            margin-left: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+        .sidebar .submenu li { font-size: 0.95em; }
+        .content {
+            flex: 1;
+            padding: 60px;
+            overflow-y: auto;
+        }
+        .section { display: none; }
+        .section.active { display: block; }
+        .section p { margin: 1em 0; line-height: 1.6; }
+    </style>
+</head>
+<body>
+<nav class="sidebar">
+    <h1>DreamSpeak</h1>
+    <h2>An Immersive Dreamspace Constructed Through Sound-Triggered Interaction</h2>
+    <ul>
+        <li class="has-submenu" onclick="toggleSubmenu('project')">Project
+            <ul id="project" class="submenu">
+                <li onclick="event.stopPropagation(); showSection('background')">Background</li>
+                <li onclick="event.stopPropagation(); showSection('concept')">Concept</li>
+                <li onclick="event.stopPropagation(); showSection('goals')">Goals</li>
+            </ul>
+        </li>
+        <li onclick="showSection('video')">Video</li>
+        <li class="has-submenu" onclick="toggleSubmenu('interaction')">Interaction
+            <ul id="interaction" class="submenu">
+                <li onclick="event.stopPropagation(); showSection('interaction-content')">Interaction Overview</li>
+                <li onclick="event.stopPropagation(); showSection('design-mechanism')">Design Mechanism</li>
+            </ul>
+        </li>
+        <li onclick="showSection('abstract')">Abstract</li>
+        <li class="has-submenu" onclick="toggleSubmenu('discussion')">Discussion
+            <ul id="discussion" class="submenu">
+                <li onclick="event.stopPropagation(); showSection('exhibition-review')">Exhibition Review</li>
+                <li onclick="event.stopPropagation(); showSection('feedback')">Feedback & Insights</li>
+            </ul>
+        </li>
+        <li onclick="showSection('references')">References</li>
+        <li class="has-submenu" onclick="toggleSubmenu('about')">About
+            <ul id="about" class="submenu">
+                <li onclick="event.stopPropagation(); showSection('team')">Team Members</li>
+                <li onclick="event.stopPropagation(); showSection('future-plan')">Future Plan</li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<main class="content">
+    <section id="background" class="section active">
+        <h1>Background</h1>
+        <p>Introductory content about the design background of the project.</p>
+        <p>
+            Human dreams in consciousness often wander on the “chaotic edge” between reality and illusion. This state blurs the boundary between the real and the imagined, evoking feelings both familiar and strange.
+        </p>
+        <figure>
+            <img src="https://i.imgur.com/p3A13tE.jpg" alt="Description of the image" style="width: 60%;">
+            <figcaption>DreamSpeak: An Immersive Dreamspace Constructed Through Sound-Triggered Interaction.</figcaption>
+        </figure>
+        <p>
+            The inspiration for this project comes from those hazy and fragmented images in childhood memories. Based on the intersection of reality and virtuality, it guides participants through the dream space from a ghostly perspective, allowing them to influence dream elements through sound interaction, revealing the subtle relationship between memory and perception.
+        </p>
+    </section>
+    <section id="concept" class="section">
+        <h1>Concept</h1>
+        <p>
+            Visually, a low-poly style is employed to enhance the abstraction and simplification of the dreamscape. This approach also imparts a pure symbolic meaning to the space, allowing participants to immerse themselves more easily in emotions and imagination rather than being confined by overly realistic details.
+        </p>
+        <p>
+            The work aims to make the dream possess a certain form while maintaining a vague and open interpretative space, aligning with the uncertainty and ambiguity inherent in dreams. Through sound-triggered interaction design, participants’ actions influence objects in the dream like ghosts, driving the construction and transformation of the dream, exploring the boundaries between memory and reality, and creating an immersive and surreal dream experience.
+        </p>
+    </section>
+    <section id="goals" class="section">
+        <h1>Goals</h1>
+        <p>
+            "DreamSpeak" aims to create an immersive and interactive dream space where sound acts as a catalyst for real-time construction and transformation.
+        </p>
+        <p>
+            The project seeks to explore the intricate connections between sound, memory, and virtual reality, offering participants a unique experience that blends perception with imagination.
+        </p>
+        <p>
+            By blurring the boundaries between the real and the imagined, it encourages users to engage emotionally and creatively, unlocking new ways of experiencing dreams.
+        </p>
+    </section>
+    <section id="video" class="section">
+        <h1>Video</h1>
+<!--        <p>-->
+<!--            a virtual dream space through user voice input.-->
+<!--        </p>-->
+        <!-- 插入 Bilibili 视频 iframe -->
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114551458630145&bvid=BV1hpJHz1Ew5&cid=30093543889&p=1"
+                scrolling="no"
+                border="0"
+                frameborder="no"
+                framespacing="0"
+                allowfullscreen="true"
+                width="1280"
+                height="720"
+        ></iframe>
+
+<!--        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114551626402554&bvid=BV1rwJHzFEwV&cid=30094393481&p=1"-->
+<!--                scrolling="no"-->
+<!--                border="0"-->
+<!--                frameborder="no"-->
+<!--                framespacing="0"-->
+<!--                allowfullscreen="true"-->
+<!--                width="640"-->
+<!--                height="360"-->
+<!--        ></iframe>-->
+    </section>
+    <section id="interaction-content" class="section">
+        <h1>Interaction Overview</h1>
+        <p>
+            In Scene One, the participant stands in the garden outside the house, facing an empty swing.
+            When they blow into the microphone, the swing moves back and forth as if by magic, suggesting the participant’s voice influences the dream.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <img src="https://i.imgur.com/o9aESHJ.png" alt="Image 1" style="width: 45%; height: auto;">
+            <img src="https://i.imgur.com/q7FVHkl.png" alt="Image 2" style="width: 45%; height: auto;">
+        </div>
+        <p>
+            In Scene Two, the participant is inside the house, with a little girl who only has a mouth standing outside the window.
+            They “communicate” through a string-connected paper cup telephone. When speaking, musical notes and expressions appear on the cup, and the girl responds while the participant’s cup displays “speech.”
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <img src="https://i.imgur.com/NgNl3W7.png" alt="Image 1" style="width: 45%; height: auto;">
+            <img src="https://i.imgur.com/GUyceym.png" alt="Image 2" style="width: 45%; height: auto;">
+        </div>
+        <p>
+            This scene simulates the participant’s experience at the intersection of dream and virtual space, engaging in dialogue with their virtual self-image or imagined figures.
+        </p>
+    </section>
+    <section id="design-mechanism" class="section">
+        <h1>Design Mechanism</h1>
+        <p>
+            This project uses Unity as the development platform, with the microphone as the primary interaction input device,
+            constructing a low-poly dream space centered around sound-triggered mechanisms.
+        </p>
+        <p>
+            The overall design focuses on creating a surreal and detached atmosphere, allowing participants to freely wander
+            along the boundary between reality and dreams.
+        </p>
+        <figure>
+            <img src="https://i.imgur.com/yal8hzw.jpeg" alt="Description of the image" style="width: 60%;">
+            <figcaption> Objects react to blowing and speaking into the microphone.</figcaption>
+        </figure>
+        <p>
+            The space is built using a stylized low-poly modeling language, combined with Unity’s built-in audio analysis tools
+            to sample user sound in real time and determine volume thresholds.
+            Different sound features (such as blowing or speaking) trigger corresponding object animations in the scene —
+            for example, balloons rising, swings swinging, and paper cup telephones displaying symbols representing speech —
+            forming an interactive feedback reminiscent of “dream speech.”
+        </p>
+    </section>
+    <section id="abstract" class="section">
+        <h1>Abstract</h1>
+        <p>
+            "DreamSpeak" is an interactive immersive experience that dynamically generates and transforms
+            a virtual dream space through user voice input.
+        </p>
+        <p>
+            The system captures sound signals via a microphone and converts audio information in real-time
+            into spatial and visual changes within a low-poly environment, blending sound and visual elements
+            to present an abstract atmosphere reminiscent of dreamlike, fragmented memories.
+            The use of low-poly models creates a clean visual style with a hazy dreamlike quality, enhancing
+            the surreal experience of the virtual space.
+        </p>
+        <p>
+            The current work targets desktop platforms, with future possibilities of integrating virtual reality technology
+            to enhance immersion and interaction. The overall project explores the potential of sound-driven interaction
+            in constructing dream spaces, laying practical groundwork for future sound-driven immersive experience designs.
+        </p>
+    </section>
+    <section id="exhibition-review" class="section">
+        <h1>Exhibition Review</h1>
+        <p>
+            The project is currently in a small-scale internal exhibition phase,
+            with participants including two project members and three to four external students.
+            Overall feedback shows that participants generally appreciate the dreamlike atmosphere created by the project,
+            especially the low-poly style and color palette, which bring a hazy and unique visual sensation to the dream space.
+        </p>
+        <p>
+            Some participants mentioned that the sound-triggered object responses enhanced the fun of interaction,
+            allowing them to feel subtle fluctuations of "life" within the dream.
+        </p>
+        <p>
+            However, some participants pointed out that the lack of precise real-time voice input interaction limits the sense of involvement.
+            Several expressed eagerness to directly influence the scene with their voice,
+            thereby gaining a stronger immersive experience.
+            In addition, some students felt that the current interaction content is limited,
+            and there is room to expand the amount of interactive features,
+            hoping that future work will focus more on improving expressiveness and enriching interactive content.
+        </p>
+        <p>
+            Overall, the preliminary exhibition provided valuable feedback for subsequent development and refinement.
+            Future efforts will focus on implementing real-time interaction functions and deepening user experience improvements.
+        </p>
+    </section>
+    <section id="feedback" class="section">
+        <h1>Feedback & Insights</h1>
+        <p>
+            This project deepened our understanding of the intrinsic relationship between visual style and perceptual interaction.
+            The low-poly style, with its abstract and minimalist form, successfully creates the blurred boundaries of a dream,
+            evoking participants' perceptual tension between reality and illusion.
+        </p>
+        <p>
+            The sound-triggered interaction mechanism not only gives dynamic life to static scenes,
+            but also reveals the key role of sensory input in constructing immersive experiences.
+        </p>
+        <p>
+            During the process, we recognized that technical limitations significantly impact immersion.
+            Insufficient real-time responsiveness reduces participant engagement,
+            emphasizing the need for future work to focus on smooth integration and feedback optimization of multimodal interactions.
+            By integrating auditory and visual sensory stimuli, users can be more effectively guided through the "chaotic edge"—
+            the interface where reality and dreams intertwine,
+            triggering more layered emotional and cognitive responses.
+        </p>
+        <p>
+            From a design perspective, this project suggests that future immersive spatial construction can transcend traditional pursuit of visual details,
+            exploring the potential of abstraction and symbolic expression in emotional communication.
+            The mystery and ambiguity of dream experiences are reinforced through this combination of simplified visuals and multisensory interaction.
+            Thus, cross-sensory design strategies not only expand the boundaries of digital art expression,
+            but also open new paths for building imaginative and empathetic future virtual environments.
+        </p>
+    </section>
+    <section id="references" class="section">
+        <h1>References</h1>
+        <p>
+            This project builds upon existing research and artistic works that explore sound-driven virtual environments and dream-inspired interactive installations. Notable inspirations include PluginHUMAN’s <i>Dream</i> [1], Laia Cabrera’s <i>Dream E-Scape</i> [2], and various dream interaction works on the Xiaohongshu platform [3]. These works inform the conceptual and aesthetic framework of our project, which focuses on the fusion of sound-triggered interactions within a stylized, low-poly dream environment.
+        </p>
+        <p>[1] PluginHUMAN. 2019. Dream. Retrieved from <a href="https://pluginhuman.com" target="_blank" rel="noopener noreferrer">https://pluginhuman.com</a></p>
+        <p>[2] Laia Cabrera. 2020. Dream E-Scape. Retrieved from <a href="https://laiacabrera.com" target="_blank" rel="noopener noreferrer">https://laiacabrera.com</a></p>
+        <p>[3] Xiaohongshu Users. 2024. Interactive Dream Experience Posts. Xiaohongshu Platform.</p>
+    </section>
+    <section id="team" class="section">
+        <h1>Team Members</h1>
+        <div class="member">
+            <p><strong>Yuxin Hong</strong><br>
+                School of Design & Innovation,<br>
+                China Academy of Art<br>
+                Hangzhou, China<br>
+                <a href="mailto:1425302419@qq.com">1425302419@qq.com</a></p>
+        </div>
+        <div class="member">
+            <p><strong>Yihan Wang</strong><br>
+                School of Design & Innovation,<br>
+                China Academy of Art<br>
+                Hangzhou, China<br>
+                <a href="mailto:2413668215@qq.com">2413668215@qq.com</a></p>
+        </div>
+    </section>
+    <section id="future-plan" class="section">
+        <h1>Future Plan</h1>
+        <p>
+            This project explores the perceptual tension and interaction possibilities at the boundary between reality and illusion through a sound-triggered low-poly dream space.
+        </p>
+        <p>
+            The low-poly visual style not only enhances the dreamlike ambiguity and mystery but also provides a unique expression for immersive experiences. Although the current implementation is still in its early stages and does not fully integrate real-time interaction, it demonstrates the potential of sound-driven sensory experiences.
+        </p>
+        <p>
+            In the future, combining multimodal feedback and optimizing technology will lay a solid foundation for building richer and more emotionally resonant virtual dreamscapes. This project attempts a new perspective in immersive digital art design, with hopes for continuous deepening and expansion in subsequent research.
+        </p>
+    </section>
+</main>
+<script>
+    function toggleSubmenu(id) {
+        // 关闭除当前之外的所有子菜单
+        document.querySelectorAll('.submenu').forEach(menu => {
+            if(menu.id !== id) {
+                menu.style.display = 'none';
+                // 移除对应父级 li 的 open 类
+                const parentLi = menu.parentElement;
+                if(parentLi && parentLi.classList.contains('open')) {
+                    parentLi.classList.remove('open');
+                }
+            }
+        });
+        const submenu = document.getElementById(id);
+        if(submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            submenu.parentElement.classList.remove('open');
+        } else {
+            submenu.style.display = 'block';
+            submenu.parentElement.classList.add('open');
+        }
+    }
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+        // 先清除所有 li active
+        document.querySelectorAll('.sidebar li').forEach(li => {
+            li.classList.remove('active');
+        });
+        // 给点击的子菜单li加active
+        const items = document.querySelectorAll(`li[onclick*="${sectionId}"]`);
+        items.forEach(item => item.classList.add('active'));
+        // 给父菜单也加active
+        items.forEach(item => {
+            let parent = item.parentElement;
+            while(parent && parent.classList.contains('submenu')) {
+                const parentLi = parent.parentElement;
+                if(parentLi && parentLi.tagName === 'LI') {
+                    parentLi.classList.add('active');
+                    parent = parentLi.parentElement;
+                } else {
+                    break;
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
